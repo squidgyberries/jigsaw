@@ -7,15 +7,14 @@
 static const char *vert_source =
 "#version 330 core\n"
 "layout (location = 0) in vec2 aPos;\n"
-"out vec2 pos;\n"
+"uniform mat4 view;\n"
+"uniform mat4 model;\n"
 "void main() {\n"
-"  gl_Position = vec4(aPos, 0.0, 1.0);\n"
-"  pos = aPos;\n"
+"  gl_Position = view * model * vec4(aPos, 0.0, 1.0);\n"
 "}\n";
 
 static const char *frag_source =
 "#version 330 core\n"
-"in vec2 pos;\n"
 "out vec4 FragColor;\n"
 "void main() {\n"
 "  FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"

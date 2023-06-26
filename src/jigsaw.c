@@ -1,3 +1,4 @@
+#include "cglm/mat4.h"
 #include "shader.h"
 
 #include <stdio.h>
@@ -6,6 +7,8 @@
 #include <glad/gl.h>
 
 #include <GLFW/glfw3.h>
+
+#include <cglm/cglm.h>
 
 int main(void) {
   int rc = 0;
@@ -57,6 +60,13 @@ int main(void) {
 
   glUseProgram(program);
 
+  mat4 view = GLM_MAT4_IDENTITY_INIT;
+  glm_scale(view, (vec3){1.0f/8.0f, 1.0/6.0f, 1.0f});
+  glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE, (float *)view);
+
+  mat4 model = GLM_MAT4_IDENTITY_INIT;
+  glUniformMatrix4fv(glGetUniformLocation(program, "model"), 1, GL_FALSE, (float *)model);
+
   while (!glfwWindowShouldClose(window)) {
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -64,7 +74,7 @@ int main(void) {
     glDrawArrays(GL_TRIANGLES, 0, 3);
 
     glfwSwapBuffers(window);
-    glfwPollEvents();
+    glfwWaitEvents();
   }
 
 exit1:

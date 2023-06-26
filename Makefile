@@ -1,5 +1,5 @@
 CC := cc
-CFLAGS := -std=c17 -Os -Wall -Wextra -Wpedantic -Wno-unused-parameter -Ideps/glfw/include -Ideps/glad/include
+CFLAGS := -std=c17 -Os -Wall -Wextra -Wpedantic -Wno-unused-parameter -Ideps/glfw/include -Ideps/glad/include -Ideps/cglm/include
 LDFLAGS := deps/glad/src/gl.o deps/glfw/src/libglfw3.a deps/cglm/libcglm.a -lX11 -lm
 
 SRC := src/jigsaw.c src/shader.c
