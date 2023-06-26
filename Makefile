@@ -8,7 +8,7 @@ IOBJ := $(SRC:.c=.o)
 OBJ := $(subst src,build,$(IOBJ))
 
 jigsaw: $(OBJ) libs
-	$(CC) -o $@ $(LDFLAGS) $(OBJ)
+	$(CC) -o $@ $(OBJ) $(LDFLAGS)
 
 run: jigsaw
 	./jigsaw

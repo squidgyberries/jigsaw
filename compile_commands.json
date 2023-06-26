@@ -1,0 +1,485 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-std=c17",
+      "-Os",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wno-unused-parameter",
+      "-Ideps/glfw/include",
+      "-Ideps/glad/include",
+      "-c",
+      "-o",
+      "build/jigsaw.o",
+      "src/jigsaw.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw",
+    "file": "/home/squidge/Documents/dev/jigsaw/src/jigsaw.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/build/jigsaw.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "src/gl.o",
+      "src/gl.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glad",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glad/src/gl.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glad/src/gl.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/context.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/context.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/context.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/context.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/init.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/init.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/init.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/init.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/input.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/input.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/input.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/input.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/monitor.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/monitor.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/monitor.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/monitor.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/platform.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/platform.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/platform.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/platform.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/vulkan.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/vulkan.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/vulkan.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/window.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/window.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/window.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/window.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/egl_context.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/egl_context.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/egl_context.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/osmesa_context.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/osmesa_context.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/osmesa_context.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/null_init.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/null_init.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/null_init.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/null_init.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/null_monitor.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/null_monitor.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/null_monitor.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/null_window.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/null_window.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/null_window.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/null_window.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-Wdeclaration-after-statement",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/null_joystick.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/null_joystick.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/null_joystick.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/posix_module.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/posix_module.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/posix_module.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/posix_module.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/posix_time.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/posix_time.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/posix_time.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/posix_time.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/posix_thread.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/posix_thread.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/posix_thread.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/x11_init.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/x11_init.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/x11_init.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/x11_init.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/x11_monitor.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/x11_monitor.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/x11_monitor.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/x11_monitor.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/x11_window.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/x11_window.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/x11_window.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/x11_window.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/xkb_unicode.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/xkb_unicode.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/xkb_unicode.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/xkb_unicode.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/glx_context.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/glx_context.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/glx_context.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/glx_context.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/linux_joystick.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/linux_joystick.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/linux_joystick.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/linux_joystick.c.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-D_DEFAULT_SOURCE",
+      "-D_GLFW_X11",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/include",
+      "-I/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+      "-std=c99",
+      "-fPIC",
+      "-Wall",
+      "-c",
+      "-o",
+      "CMakeFiles/glfw.dir/posix_poll.c.o",
+      "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/posix_poll.c"
+    ],
+    "directory": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src",
+    "file": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/posix_poll.c",
+    "output": "/home/squidge/Documents/dev/jigsaw/deps/glfw/src/CMakeFiles/glfw.dir/posix_poll.c.o"
+  }
+]
