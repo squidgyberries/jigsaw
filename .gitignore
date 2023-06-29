@@ -1,4 +1,4 @@
-jigsaw
 build/
 .cache/
-compile_commands.json
+*.jpg
+.vscode/

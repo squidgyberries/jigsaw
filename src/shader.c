@@ -7,17 +7,23 @@
 static const char *vert_source =
 "#version 330 core\n"
 "layout (location = 0) in vec2 aPos;\n"
+"layout (location = 1) in vec2 aTexCoord;\n"
+"out vec2 texCoord;\n"
 "uniform mat4 view;\n"
 "uniform mat4 model;\n"
 "void main() {\n"
 "  gl_Position = view * model * vec4(aPos, 0.0, 1.0);\n"
+"  texCoord = aTexCoord;\n"
 "}\n";
 
 static const char *frag_source =
 "#version 330 core\n"
+"in vec2 texCoord;\n"
 "out vec4 FragColor;\n"
+"uniform sampler2D tex;\n"
 "void main() {\n"
-"  FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
+// "  FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
+"  FragColor = texture(tex, texCoord);\n"
 "}\n";
 
 int create_program(uint32_t *out) {
