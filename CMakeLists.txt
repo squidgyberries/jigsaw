@@ -17,6 +17,6 @@ add_subdirectory(deps/cglm)
 
 add_compile_options(-Wall -Wextra -Wpedantic -Wno-unused-parameter)
 
-add_executable(jigsaw src/jigsaw.c src/shader.c src/stb_image.c deps/glad/src/gl.c)
+add_executable(jigsaw src/jigsaw.c src/shader.c src/stb_image.c src/window.c deps/glad/src/gl.c)
 target_include_directories(jigsaw PRIVATE deps/glad/include deps/stb)
 target_link_libraries(jigsaw glfw cglm)

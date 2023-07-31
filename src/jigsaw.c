@@ -1,11 +1,9 @@
 #include "shader.h"
+#include "window.h"
 
 #include <stdio.h>
 #include <stdint.h>
-
-#include <glad/gl.h>
-
-#include <GLFW/glfw3.h>
+#include <time.h>
 
 #include <cglm/cglm.h>
 
@@ -33,6 +31,8 @@ struct {
 // uint32_t view_loc = 0;
 // uint32_t model_loc = 0;
 
+float zoom = 1.0f;
+
 const float vertices[] = {
   -1.0f, 1.0f, 0.0f, 1.0f,
   -1.0f, -1.0f, 0.0f, 0.0f,
@@ -44,34 +44,39 @@ const float vertices[] = {
 
 void update_view(int width, int height, mat4 view) {
   glm_mat4_identity(view);
-  glm_scale(view, (vec3){1.0f/((float)width), 1.0f/((float)height), 1.0f});
+  glm_scale(view, (vec3){zoom/((float)width), zoom/((float)height), 1.0f});
   glUniformMatrix4fv(gl.view_loc, 1, GL_FALSE, (float *)view);
   glViewport(0, 0, width, height);
+}
+
+void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+  if (key == GLFW_KEY_UP && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+    zoom *= 1.25f;
+  }
+  if (key == GLFW_KEY_DOWN && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+    zoom /= 1.25f;
+  }
+  update_view(win.window_height, win.window_width, gl.view);
 }
 
 int main(int argc, char *argv[]) {
   int rc = 0;
 
-  glfwInit();
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-  win.window = glfwCreateWindow(win.window_width, win.window_height, "jigsaw", NULL, NULL);
+  srand(time(NULL));
+
+  win.window = create_window(win.window_width, win.window_height);
   if (!win.window) {
     fprintf(stderr, "error: GLFW window creation failed\n");
     rc = 1;
     goto exit0;
   }
-  glfwMakeContextCurrent(win.window);
+  glfwSetKeyCallback(win.window, key_callback);
   
   int version = gladLoadGL(glfwGetProcAddress);
   fprintf(stderr, "GL_VENDOR: %s\n", glGetString(GL_VENDOR));
   fprintf(stderr, "GL_RENDERER: %s\n", glGetString(GL_RENDERER));
   fprintf(stderr, "GL_VERSION: %s\n", glGetString(GL_VERSION));
   fprintf(stderr, "Using OpenGL version %d.%d\n", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
-
-  glfwSwapInterval(1);
 
   if ((rc = create_program(&gl.program))) {
     goto exit1;
@@ -99,9 +104,12 @@ int main(int argc, char *argv[]) {
   if (argc > 1) {
     image = stbi_load(argv[1], &image_width, &image_height, &image_n, 3);
   } else {
-    image_width = 4645;
-    image_height = 3097;
+    image_width = 800;
+    image_height = 600;
     image = malloc(sizeof(unsigned char) * image_width * image_height * 3);
+    for (int i = 0; i < image_width * image_height * 3; ++i) {
+      image[i] = rand() % 255;
+    }
   }
   if (!image) {
     fprintf(stderr, "error: Image loading failed\n");
@@ -116,8 +124,8 @@ int main(int argc, char *argv[]) {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width, image_height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
   if (argc > 1) {
