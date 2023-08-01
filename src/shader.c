@@ -21,9 +21,13 @@ static const char *frag_source =
 "in vec2 texCoord;\n"
 "out vec4 FragColor;\n"
 "uniform sampler2D tex;\n"
+"uniform uint id;\n"
 "void main() {\n"
 // "  FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
-"  FragColor = texture(tex, texCoord);\n"
+"  vec2 newTex = texCoord;\n"
+"  newTex.x += mod(id, 10) * 0.1;\n"
+"  newTex.y += floor(id / 10.0) * 0.1;\n"
+"  FragColor = texture(tex, newTex);\n"
 "}\n";
 
 int create_program(uint32_t *out) {

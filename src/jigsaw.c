@@ -25,7 +25,8 @@ struct {
   uint32_t program;
   uint32_t view_loc;
   uint32_t model_loc;
-} gl = {GLM_MAT4_IDENTITY_INIT, 0, 0, 0};
+  uint32_t id_loc;
+} gl = {GLM_MAT4_IDENTITY_INIT, 0, 0, 0, 0};
 // mat4 view = GLM_MAT4_IDENTITY_INIT;
 // uint32_t program = 0;
 // uint32_t view_loc = 0;
@@ -34,12 +35,12 @@ struct {
 float zoom = 1.0f;
 
 const float vertices[] = {
-  -1.0f, 1.0f, 0.0f, 1.0f,
+  -1.0f, 1.0f, 0.0f, 0.1f,
   -1.0f, -1.0f, 0.0f, 0.0f,
-  1.0f, 1.0f, 1.0f, 1.0f,
-  1.0f, 1.0f, 1.0f, 1.0f,
+  1.0f, 1.0f, 0.1f, 0.1f,
+  1.0f, 1.0f, 0.1f, 0.1f,
   -1.0f, -1.0f, 0.0f, 0.0f,
-  1.0f, -1.0f, 1.0f, 0.0f
+  1.0f, -1.0f, 0.1f, 0.0f
 };
 
 void update_view(int width, int height, mat4 view) {
@@ -47,6 +48,33 @@ void update_view(int width, int height, mat4 view) {
   glm_scale(view, (vec3){zoom/((float)width), zoom/((float)height), 1.0f});
   glUniformMatrix4fv(gl.view_loc, 1, GL_FALSE, (float *)view);
   glViewport(0, 0, width, height);
+}
+
+unsigned char *load_image(const char *filename, int *width, int *height) {
+  int n;
+  unsigned char *load = stbi_load(filename, width, height, &n, 3);
+  if (!load) {
+    *width = 800;
+    *height = 600;
+    fprintf(stderr, "warning: Image loading failed, allocating image...\n");
+    return malloc(sizeof(unsigned char) * 800 * 600 * 3);
+  } else {
+    int xr = *width % 10;
+    int yr = *height % 10;
+    int newx = *width - xr;
+    int newy = *height - yr;
+    unsigned char *out = malloc(sizeof(unsigned char) * newx * newy * 3);
+    printf("%d %d\n", newx, newy);
+    for (int i = 0; i < newy; ++i) {
+      for (int j = 0; j < newx * 3; ++j) {
+        int li = (i * *width * 3) + j;
+        int oi = (i * newx * 3) + j;
+        out[oi] = load[li];
+      }
+    }
+    stbi_image_free(load);
+    return out;
+  }
 }
 
 void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
@@ -99,22 +127,12 @@ int main(int argc, char *argv[]) {
   glEnableVertexAttribArray(1);
 
   stbi_set_flip_vertically_on_load(true);
-  int image_width, image_height, image_n;
-  unsigned char *image = NULL;
+  int image_width, image_height;
+  unsigned char *image;
   if (argc > 1) {
-    image = stbi_load(argv[1], &image_width, &image_height, &image_n, 3);
+    image = load_image(argv[1], &image_width, &image_height);
   } else {
-    image_width = 800;
-    image_height = 600;
-    image = malloc(sizeof(unsigned char) * image_width * image_height * 3);
-    for (int i = 0; i < image_width * image_height * 3; ++i) {
-      image[i] = rand() % 255;
-    }
-  }
-  if (!image) {
-    fprintf(stderr, "error: Image loading failed\n");
-    rc = 1;
-    goto exit2;
+    image = load_image(NULL, &image_width, &image_height);
   }
 
   uint32_t texture;
@@ -128,11 +146,7 @@ int main(int argc, char *argv[]) {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image_width, image_height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-  if (argc > 1) {
-    stbi_image_free(image);
-  } else {
-    free(image);
-  }
+  free(image);
   image = NULL;
 
   glUseProgram(gl.program);
@@ -141,6 +155,7 @@ int main(int argc, char *argv[]) {
 
   gl.view_loc = glGetUniformLocation(gl.program, "view");
   gl.model_loc = glGetUniformLocation(gl.program, "model");
+  gl.id_loc = glGetUniformLocation(gl.program, "id");
 
   update_view(win.window_width, win.window_height, gl.view);
 
@@ -152,11 +167,23 @@ int main(int argc, char *argv[]) {
     glfwGetWindowSize(win.window, &win.window_width, &win.window_height);
     update_view(win.window_width, win.window_height, gl.view);
 
-    mat4 model = GLM_MAT4_IDENTITY_INIT;
-    // glm_translate(model, (vec3){x, 0.0f, 0.0f});
-    glm_scale(model, (vec3){(float)image_width, (float)image_height, 1.0f});
-    glUniformMatrix4fv(gl.model_loc, 1, GL_FALSE, (float *)model);
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    for (uint32_t i = 0; i < 100; ++i) {
+      uint32_t j = rand() % 100;
+      glUniform1ui(gl.id_loc, j);
+      mat4 model = GLM_MAT4_IDENTITY_INIT;
+      uint32_t x = i % 10;
+      uint32_t y = i / 10;
+      glm_scale(model, (vec3){(float)image_width / 10.0f, (float)image_height / 10.0f, 1.0f});
+      glm_translate(model, (vec3){(float)(-9.0f + x*2), (float)(-9.0f + y*2), 0.0f});
+      glUniformMatrix4fv(gl.model_loc, 1, GL_FALSE, (float *)model);
+      glDrawArrays(GL_TRIANGLES, 0, 6);
+    }
+
+    // mat4 model = GLM_MAT4_IDENTITY_INIT;
+    // // glm_translate(model, (vec3){x, 0.0f, 0.0f});
+    // glm_scale(model, (vec3){(float)image_width, (float)image_height, 1.0f});
+    // glUniformMatrix4fv(gl.model_loc, 1, GL_FALSE, (float *)model);
+    // glDrawArrays(GL_TRIANGLES, 0, 6);
     // x += 1.0f;
 
     glfwSwapBuffers(win.window);
@@ -164,12 +191,7 @@ int main(int argc, char *argv[]) {
   }
 
   glDeleteTextures(1, &texture);
-exit2:
-  if (argc > 1) {
-    stbi_image_free(image);
-  } else {
-    free(image);
-  }
+  free(image);
   glDeleteBuffers(1, &vbo);
   glDeleteVertexArrays(1, &vao);
 exit1:
