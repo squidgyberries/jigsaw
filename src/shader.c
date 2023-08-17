@@ -11,9 +11,12 @@ static const char *vert_source =
 "out vec2 texCoord;\n"
 "uniform mat4 view;\n"
 "uniform mat4 model;\n"
+"uniform uint id;\n"
 "void main() {\n"
 "  gl_Position = view * model * vec4(aPos, 0.0, 1.0);\n"
 "  texCoord = aTexCoord;\n"
+"  texCoord.x += mod(id, 10) * 0.1;\n"
+"  texCoord.y += floor(id / 10.0) * 0.1;\n"
 "}\n";
 
 static const char *frag_source =
@@ -21,13 +24,8 @@ static const char *frag_source =
 "in vec2 texCoord;\n"
 "out vec4 FragColor;\n"
 "uniform sampler2D tex;\n"
-"uniform uint id;\n"
 "void main() {\n"
-// "  FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
-"  vec2 newTex = texCoord;\n"
-"  newTex.x += mod(id, 10) * 0.1;\n"
-"  newTex.y += floor(id / 10.0) * 0.1;\n"
-"  FragColor = texture(tex, newTex);\n"
+"  FragColor = texture(tex, texCoord);\n"
 "}\n";
 
 int create_program(uint32_t *out) {
